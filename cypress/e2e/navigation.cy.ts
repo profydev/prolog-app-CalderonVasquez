@@ -1,6 +1,6 @@
 describe("Sidebar Navigation", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000/dashboard");
+    cy.visit("http://localhost:3001/dashboard");
   });
 
   context("desktop resolution", () => {
@@ -29,6 +29,10 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+
+      // cy.get("nav")
+      //   .contains("Support")
+      //   .should("have.attr", "href", "/dashboard/support");
     });
 
     it("is collapsible", () => {
@@ -37,7 +41,7 @@ describe("Sidebar Navigation", () => {
 
       // check that links still exist and are functionable
       cy.get("nav").find("a").should("have.length", 5).eq(1).click();
-      cy.url().should("eq", "http://localhost:3000/dashboard/issues");
+      cy.url().should("eq", "http://localhost:3001/dashboard/issues");
 
       // check that text is not rendered
       cy.get("nav").contains("Issues").should("not.exist");
@@ -60,7 +64,7 @@ describe("Sidebar Navigation", () => {
 
     function isNotInViewport(el: string) {
       cy.get(el).then(($el) => {
-        // naviation should be outside of the screen
+        // navigation should be outside of the screen
         const rect = $el[0].getBoundingClientRect();
         expect(rect.left).to.be.equal(-rect.width);
         expect(rect.right).to.be.equal(0);
