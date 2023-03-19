@@ -8,22 +8,6 @@ describe("Sidebar Navigation", () => {
       cy.viewport(1025, 900);
     });
 
-    it("opens an email client with the correct recipient and subject when Support button is clicked", () => {
-      // click the Support button
-      cy.get("nav").contains("Support").click();
-
-      // check that the email URL is correct and that the email client is opened
-      cy.window().then((win) => {
-        cy.stub(win, "open").as("windowOpen");
-      });
-
-      const recipient = "support@prolog-app.com";
-      const subject = "Support Request:";
-      const emailUrl = `mailto:${recipient}?subject=${subject}`;
-
-      cy.get("@windowOpen").should("be.calledWith", emailUrl);
-    });
-
     it("links are working", () => {
       // check that each link leads to the correct page
       cy.get("nav")
@@ -45,6 +29,15 @@ describe("Sidebar Navigation", () => {
       cy.get("nav")
         .contains("Settings")
         .should("have.attr", "href", "/dashboard/settings");
+    });
+
+    it("support button working", () => {
+      // click the Support button
+      cy.get("button").contains("Support").click();
+      cy.url().should(
+        "eq",
+        "mailto:support@prolog-app.com?subject=Support Request: "
+      );
     });
 
     it("is collapsible", () => {
