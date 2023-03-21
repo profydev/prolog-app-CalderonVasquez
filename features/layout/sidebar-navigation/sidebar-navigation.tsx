@@ -163,7 +163,7 @@ export function SidebarNavigation() {
         <Header>
           <Logo
             src={
-              isSidebarCollapsed
+              isSidebarCollapsed && isMobileMenuOpen
                 ? "/icons/logo-small.svg"
                 : "/icons/logo-large.svg"
             }
