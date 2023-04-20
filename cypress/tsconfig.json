@@ -5,7 +5,7 @@
     "lib": ["es5", "dom"],
     // be explicit about types included
     // to avoid clashing with Jest types
-    "types": ["cypress", "node", "lodash"],
+    "types": ["cypress", "node"],
     
     "isolatedModules": false
   },
