@@ -78,5 +78,3 @@ export function IssueRow({ projectLanguage, issue }: IssueRowProps) {
     </Row>
   );
 }
-
-//a9f7e3cebd714743ac67f85c7ba8f887e0b3e8d1
