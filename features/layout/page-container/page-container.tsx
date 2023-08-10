@@ -63,7 +63,6 @@ export function PageContainer({ children, title, info }: PageContainerProps) {
         <meta name="description" content="Error monitoring" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <SidebarNavigation />
       <Main>
         <ContentContainer>
